@@ -1,0 +1,83 @@
+.header {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 166, 81, 1) 0%,
+      rgba(255, 204, 0, 1) 50%,
+      rgba(0, 79, 152, 1) 100%
+    );
+    font-weight: bold;
+    color: white;
+  }
+  
+  .header {
+    position: relative;
+  }
+  
+  .flagContainer {
+    position: absolute;
+    right: 10px;
+  }
+  
+  .flag {
+    max-height: 40px;
+  }
+
+  .partidos {
+    background-image: linear-gradient(to right, #fff, #fff, #0099FF);
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  .title {
+    color: #00CC33;
+    
+  }
+  .partido-img {
+    width: 200px;
+    height: 200px;
+  }
+  .header {
+    position: relative;
+    background-color: #3a3a3a;
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+  }
+  
+.pt {
+  background: linear-gradient(to bottom right, #d90000, #ff4d4d);
+}
+
+.psdb {
+  background: linear-gradient(to bottom right, #1e90ff, #87cefa);
+}
+
+.pmdb {
+  background: linear-gradient(to bottom right, #800000, #b22222);
+}
+
+.flag {
+  width: 35px;
+  height: auto;
+}
+
+.flagContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+  .header.PT {
+    background: linear-gradient(to bottom, #ff0000, #ffffff);
+  }
+  
+  .header.PSDB {
+    background: linear-gradient(to bottom, #1e90ff, #ffffff);
+  }
+  
+  .header.PSOL {
+    background: linear-gradient(to bottom, #ff00ff, #ffffff);
+  }
+  
+
