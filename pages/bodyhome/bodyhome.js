@@ -3,7 +3,7 @@ import styles from '../../styles/header.module.css';
 const Bodyhome = () => {
   return (
 <main>
-        <section className={styles.partidos}>
+        <section className={styles.header}>
           <h2 className={styles.title}>Partidos Políticos</h2>
           <div className="container">
             <div className="row my-3">

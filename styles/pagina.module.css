@@ -1,0 +1,10 @@
+.backgroundPage {
+    background: linear-gradient(
+      45deg,
+      rgba(0, 166, 81, 1) 0%,
+      rgba(255, 204, 0, 1) 50%,
+      rgba(0, 79, 152, 1) 100%
+    );
+    font-weight: bold;
+    color: white;
+  }

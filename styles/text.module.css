@@ -1,0 +1,23 @@
+.button {
+    margin-top: 10px;
+}
+
+.typingAnimation {
+    overflow: hidden;
+    animation: typing 2s steps(30, end);
+    white-space: nowrap;
+    border-right: 0.15em solid #000;
+    /* Define uma "barra de digitação" */
+    font-family: monospace;
+    /* Pode ser ajustado para o estilo de fonte desejado */
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 20%;
+    }
+}
