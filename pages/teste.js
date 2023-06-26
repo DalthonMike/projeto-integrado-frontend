@@ -8,6 +8,7 @@ import Header from '../components/header';
 import Modal from '../components/Modal'
 
 const Teste = () => {
+    const [contadorAcertos, setContadorAcertos] = useState(0);
     const [politicos, setPoliticos] = useState([]);
     const [deputadoAleatorio, setDeputadoAleatorio] = useState({});
     const [indiceAleatorio, setIndiceAleatorio] = useState(null);
@@ -44,6 +45,7 @@ const Teste = () => {
                 ...prevState,
                 nome: deputadoAleatorio.nome
             }));
+            setContadorAcertos(contadorAcertos + 1);
         } else {
             setMeuObjeto(prevState => ({
                 ...prevState,
@@ -70,6 +72,7 @@ const Teste = () => {
                 ...prevState,
                 partido: deputadoAleatorio.siglaPartido
             }));
+            setContadorAcertos(contadorAcertos + 1)
         } else {
             setMeuObjeto(prevState => ({
                 ...prevState,
@@ -97,6 +100,7 @@ const Teste = () => {
                 ...prevState,
                 estado: deputadoAleatorio.siglaUf
             }));
+            setContadorAcertos(contadorAcertos + 1)
         } else {
             setProgresso(progresso + 33 + 1);
             setBotaoEstado(true);
@@ -213,11 +217,11 @@ const Teste = () => {
                             onClick={() => handleClickEstado(item)} key={i}>{item.siglaUf}</Button>
                     ))}
                     <br />
-                    <Button variant='danger' onClick={openModal} style={{ marginTop: '10px' }}>Verificar</Button>
+                    <Button variant='danger' disabled={progresso < 100} onClick={openModal} style={{ marginTop: '10px' }}>Verificar</Button>
                 </Container>
                 <Modal isOpen={modalOpen} onClose={closeModal}>
                     <br/>
-                    <p>Parabéns, você acertou X de X questões!</p>
+                    <p>Parabéns, você acertou {contadorAcertos} de 3 questões!</p>
                     <p>O que você deseja?</p>
                 </Modal>
             </section>
