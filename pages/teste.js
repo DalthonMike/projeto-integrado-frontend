@@ -24,6 +24,12 @@ const Teste = () => {
     const [buttonVariantPartido, setButtonVariantPartido] = useState('primary');
     const [buttonVariantEstado, setButtonVariantEstado] = useState('primary');
 
+    const [respostas, setRespostas] = useState({
+        nome: '',
+        partido: '',
+        estado: ''
+    });
+
     const verificaSeAcertouNome = (item) => {
         if (item.nome === deputadoAleatorio.nome) {
             setMeuObjeto(prevState => ({
@@ -32,6 +38,10 @@ const Teste = () => {
             }));
             setProgresso(progresso + 33);
             setBotaoNome(true);
+            setRespostas(prevState => ({
+                ...prevState,
+                nome: deputadoAleatorio.nome
+            }));
         } else {
             setMeuObjeto(prevState => ({
                 ...prevState,
@@ -39,6 +49,10 @@ const Teste = () => {
             }));
             setProgresso(progresso + 33);
             setBotaoNome(true);
+            setRespostas(prevState => ({
+                ...prevState,
+                nome: deputadoAleatorio.nome
+            }));
         }
     };
 
@@ -50,6 +64,10 @@ const Teste = () => {
             }));
             setProgresso(progresso + 33);
             setBotaoPartido(true);
+            setRespostas(prevState => ({
+                ...prevState,
+                partido: deputadoAleatorio.siglaPartido
+            }));
         } else {
             setMeuObjeto(prevState => ({
                 ...prevState,
@@ -57,6 +75,10 @@ const Teste = () => {
             }));
             setProgresso(progresso + 33);
             setBotaoPartido(true);
+            setRespostas(prevState => ({
+                ...prevState,
+                partido: deputadoAleatorio.siglaPartido
+            }));
         }
     };
 
@@ -69,12 +91,20 @@ const Teste = () => {
                 ...prevState,
                 estado: true
             }));
+            setRespostas(prevState => ({
+                ...prevState,
+                estado: deputadoAleatorio.siglaUf
+            }));
         } else {
             setProgresso(progresso + 33 + 1);
             setBotaoEstado(true);
             setMeuObjeto(prevState => ({
                 ...prevState,
                 estado: false
+            }));
+            setRespostas(prevState => ({
+                ...prevState,
+                estado: deputadoAleatorio.siglaUf
             }));
         }
     };
@@ -150,15 +180,14 @@ const Teste = () => {
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={deputadoAleatorio.urlFoto} style={{ alignItems: 'center', justifyContent: 'center' }} />
                     </Card>
-                    <h5 className={styles.typingAnimation}>Qual o nome do deputado? resposta: {deputadoAleatorio.nome}</h5>
+                    <h5 className={styles.typingAnimation}>Qual o nome do deputado? resposta: {respostas.nome}</h5>
                     {opcoesDeputado.map((item, i) => (
                         <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoNome} variant={buttonVariantNome}
                             onClick={() => handleClickNome(item)} key={i}>{item.nome}</Button>
                     ))}
                     <br />
                     <br />
-                    <h5 className={styles.typingAnimation}>Qual o partido do deputado?
-                        resposta: {deputadoAleatorio.siglaPartido}</h5>
+                    <h5 className={styles.typingAnimation}>Qual o partido do deputado? resposta: {respostas.partido}</h5>
                     {opcoesDeputado.map((item, i) => (
                         <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoPartido} variant={buttonVariantPartido}
                             onClick={() => handleClickPartido(item)}
@@ -166,7 +195,7 @@ const Teste = () => {
                     ))}
                     <br />
                     <br />
-                    <h5 className={styles.typingAnimation}>Qual o estado do deputado? resposta: {deputadoAleatorio.siglaUf}</h5>
+                    <h5 className={styles.typingAnimation}>Qual a UF do estado de nascimento do deputado? resposta: {respostas.estado}</h5>
                     {opcoesDeputado.map((item, i) => (
                         <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoEstado} variant={buttonVariantEstado}
                             onClick={() => handleClickEstado(item)} key={i}>{item.siglaUf}</Button>
@@ -191,8 +220,4 @@ function embaralhaPartidos(arr) {
     }
     // Retornando array com aleatoriedade
     return arr;
-}
-
-function verificaAcertos(arr) {
-
 }
