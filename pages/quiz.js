@@ -222,7 +222,7 @@ const Quiz = () => {
                     <Button variant='danger' style={{marginTop: '10px'}} disabled={progresso < 100}
                             onClick={openModal}>Verificar</Button>
                 </Container>
-                <Modal isOpen={modalOpen} onClose={closeModal}>
+                <Modal isOpen={modalOpen} onClose={closeModal} deputado={deputadoAleatorio}>
                     <br/>
                     <p>Parabéns, você acertou {contadorAcertos} de 3 questões!</p>
                     <p>O que você deseja?</p>
