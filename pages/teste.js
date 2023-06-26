@@ -5,6 +5,7 @@ import styles from "../styles/teste.module.css"
 import Pagina from '../components/Pagina';
 import Footer from '../components/footer';
 import Header from '../components/header';
+import Modal from '../components/Modal'
 
 const Teste = () => {
     const [politicos, setPoliticos] = useState([]);
@@ -23,6 +24,7 @@ const Teste = () => {
     const [buttonVariantNome, setButtonVariantNome] = useState('primary');
     const [buttonVariantPartido, setButtonVariantPartido] = useState('primary');
     const [buttonVariantEstado, setButtonVariantEstado] = useState('primary');
+    const [modalOpen, setModalOpen] = useState(false);
 
     const verificaSeAcertouNome = (item) => {
         if (item.nome === deputadoAleatorio.nome) {
@@ -115,6 +117,14 @@ const Teste = () => {
         }
     };
 
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
     useEffect(() => {
         axios.get(`https://dadosabertos.camara.leg.br/api/v2/deputados`)
             .then((response) => {
@@ -146,10 +156,12 @@ const Teste = () => {
             <Header />
             <section className={styles.backgroundPage} style={{ height: '80vh' }}>
                 <ProgressBar variant='success' now={progresso} label={`${progresso}%`} animated now={progresso} />
-                <Container>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={deputadoAleatorio.urlFoto} style={{ alignItems: 'center', justifyContent: 'center' }} />
-                    </Card>
+                <Container className={styles.centeringContainer}>
+                    <div className={styles.cardImageContainer}>
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src={deputadoAleatorio.urlFoto} style={{ alignItems: 'center', justifyContent: 'center', }} />
+                        </Card>
+                    </div>
                     <h5 className={styles.typingAnimation}>Qual o nome do deputado? resposta: {deputadoAleatorio.nome}</h5>
                     {opcoesDeputado.map((item, i) => (
                         <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoNome} variant={buttonVariantNome}
@@ -171,8 +183,13 @@ const Teste = () => {
                         <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoEstado} variant={buttonVariantEstado}
                             onClick={() => handleClickEstado(item)} key={i}>{item.siglaUf}</Button>
                     ))}
-                    <Button variant='danger'>Verificar</Button>
+                    <br />
+                    <Button variant='danger' onClick={openModal} style={{ marginTop: '10px' }}>Verificar</Button>
                 </Container>
+                <Modal isOpen={modalOpen} onClose={closeModal}>
+                    <h2>Título da Modal</h2>
+                    <p>Conteúdo da Modal</p>
+                </Modal>
             </section>
             <Footer />
         </>

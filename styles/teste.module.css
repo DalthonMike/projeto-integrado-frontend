@@ -3,6 +3,8 @@
     animation: typing 2s steps(30, end);
     white-space: nowrap;
     border-right: 0.15em;
+    text-align: left;
+    margin-left: 13%;
     /* Define uma "barra de digitação" /
     font-family: monospace;
     / Pode ser ajustado para o estilo de fonte desejado */
@@ -26,4 +28,17 @@
     font-weight: bold;
     color: white;
     align-items: center;
+}
+
+.cardImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.centeringContainer {
+    text-align: center;
 }
