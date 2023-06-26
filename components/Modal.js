@@ -20,7 +20,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                     <a title='Detalhes do Deputado'>Detalhes</a>
                 </button>
                 <button className={styles.modalBtn} onClick={buttonReloadPage}>
-                    <a title='Refazer Teste'>Refazer</a>
+                    <a title='Refazer Quiz'>Refazer</a>
                 </button>
             </div>
         </div>

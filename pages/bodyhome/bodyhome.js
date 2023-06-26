@@ -1,47 +1,57 @@
 import React from 'react'
 import styles from '../../styles/header.module.css';
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+import {Button, Col, Container, Row} from "react-bootstrap";
+
 const Bodyhome = () => {
-  return (
-<main>
-        <section className={styles.header}>
-          <h2 className={styles.title}>Partidos Políticos</h2>
-          <div className="container">
-            <h1>Deputados Brasileiros</h1>
-            <p>
-              Os deputados brasileiros são membros da Câmara dos Deputados, uma das duas casas do Congresso Nacional do Brasil. Eles são eleitos pelo voto popular para representar o povo brasileiro e têm a função de elaborar e votar leis, fiscalizar o poder executivo e representar os interesses da população.
-            </p>
-
-            <h2>Funções dos Deputados</h2>
-            <p>
-              Os deputados têm várias responsabilidades importantes, incluindo:
-            </p>
-            <ul>
-              <li>Elaborar e votar projetos de lei;</li>
-              <li>Fiscalizar as ações do governo;</li>
-              <li>Aprovar o orçamento federal;</li>
-              <li>Participar de comissões parlamentares;</li>
-              <li>Representar os interesses de seus eleitores;</li>
-              <li>Debater e discutir questões de interesse público.</li>
-            </ul>
-
-            <h2>Processo de Eleição</h2>
-            <p>
-              Os deputados federais são eleitos a cada quatro anos por meio do sistema proporcional. O Brasil é dividido em estados e cada estado tem um número de deputados proporcional à sua população. Os candidatos que recebem o maior número de votos em cada estado são eleitos para ocupar as cadeiras na Câmara dos Deputados.
-            </p>
-
-            <h2>Atuação dos Deputados</h2>
-            <p>
-              Os deputados podem apresentar projetos de lei, propor emendas, participar de debates e votar nas sessões legislativas. Eles também podem fazer parte de comissões, onde discutem e analisam projetos específicos. Além disso, os deputados têm a obrigação de prestar contas aos seus eleitores, ouvindo suas demandas e buscando soluções para os problemas da sociedade.
-            </p>
-
-            <h2>Conclusão</h2>
-            <p>
-              Os deputados brasileiros desempenham um papel fundamental na democracia do país. Eles representam os cidadãos, elaboram leis e fiscalizam o poder executivo. É importante que os eleitores acompanhem o trabalho de seus deputados, participem do processo democrático e sejam ativos na cobrança por um país mais justo e transparente.
-            </p>
-          </div>
+    return (
+        <section className={styles.backgroundPage} style={{height: '80vh'}}>
+            <Container>
+                <Row>
+                    <Col>
+                        <div className={styles.quizcontainer}>
+                            <h1>Sobre o Quiz</h1>
+                            <p>
+                                Um Quiz de Deputados é um jogo interativo que testa seu conhecimento sobre os
+                                parlamentares brasileiros. Nesse tipo de quiz, você é apresentado a uma pergunta
+                                relacionada a um deputado específico e precisa selecionar a resposta correta entre
+                                várias opções de acerto. Geralmente, as opções incluem o estado de origem do deputado,
+                                seu partido político e seu nome.
+                            </p>
+                            <p>
+                                Ao jogar o Quiz de Deputados, você tem a oportunidade de aprender mais sobre os
+                                representantes eleitos, suas trajetórias políticas e seus respectivos estados e
+                                partidos. Esse tipo de jogo oferece uma maneira divertida e educativa de se familiarizar
+                                com a política brasileira e de testar seus conhecimentos sobre os legisladores do país.
+                            </p>
+                            <p>
+                                Cada pergunta do quiz apresenta informações sobre um deputado, como seu nome, partido e
+                                estado de origem. Com base nessas informações, você precisa selecionar a resposta
+                                correta. Por exemplo, a pergunta pode ser: "Qual é o partido político do deputado João
+                                da Silva?", e as opções podem ser "A) PT, B) PSDB, C) MDB, D) DEM". A resposta correta
+                                seria a opção A) PT, se esse fosse o partido do deputado João da Silva.
+                            </p>
+                            <p>
+                                O Quiz de Deputados pode abranger diversos aspectos, como história política, eventos
+                                atuais, cargos ocupados pelos deputados, entre outros. Ele oferece uma oportunidade de
+                                se manter atualizado sobre os representantes eleitos e seus respectivos estados e
+                                partidos, além de estimular o interesse pela política e pelo funcionamento do sistema
+                                legislativo brasileiro.
+                            </p>
+                            <p>
+                                Esses quizzes podem ser desenvolvidos em plataformas online, utilizando tecnologias como
+                                React, HTML, CSS e JavaScript, para criar uma experiência interativa e envolvente.
+                                Através do uso de recursos visuais e interações, os quizzes de deputados tornam-se uma
+                                forma divertida de aprender sobre a política brasileira e testar seus conhecimentos.
+                            </p>
+                            <Button variant="primary" href="/quiz">Teste seu conhecimento</Button>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </section>
-      </main>
-  )
+    )
 }
 
 export default Bodyhome

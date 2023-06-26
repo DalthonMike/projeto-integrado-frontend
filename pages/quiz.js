@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { useEffect, useState } from "react";
-import { Button, Card, Container, ProgressBar } from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {Button, Card, Container, ProgressBar} from "react-bootstrap";
 import styles from "../styles/teste.module.css"
-import Pagina from '../components/Pagina';
 import Footer from '../components/footer';
 import Header from '../components/header';
 import Modal from '../components/Modal'
 
-const Teste = () => {
+const Quiz = () => {
     const [contadorAcertos, setContadorAcertos] = useState(0);
     const [politicos, setPoliticos] = useState([]);
     const [deputadoAleatorio, setDeputadoAleatorio] = useState({});
@@ -166,58 +165,62 @@ const Teste = () => {
                 setIndiceAleatorio(Math.floor(Math.random() * response.data.dados.length));
             })
             .catch((error) => {
+                alert(error.stack);
                 console.error(error);
             });
     }, []);
 
     useEffect(() => {
-        let teste = [];
+        let politicosAleatorios = [];
         if (indiceAleatorio !== null && politicos.length > 0) {
             setDeputadoAleatorio(politicos[indiceAleatorio]);
             for (let i = 0; i < 6; i++) {
-                if (!teste.length) {
-                    teste.push(politicos[indiceAleatorio])
-                } else {
-                    teste.push(politicos[i])
-                }
+                !politicosAleatorios.length ? politicosAleatorios.push(politicos[indiceAleatorio]) : politicosAleatorios.push(politicos[Math.floor(Math.random() * politicos.length)])
             }
-            setOpcoesDeputado(embaralhaPartidos(teste));
         }
+        setOpcoesDeputado(embaralhaPartidos(politicosAleatorios));
     }, [indiceAleatorio, politicos]);
 
     return (
         <>
-            <Header />
-            <section className={styles.backgroundPage} style={{ height: '80vh' }}>
-                <ProgressBar variant='success' now={progresso} label={`${progresso}%`} animated now={progresso} />
+            <Header/>
+            <section className={styles.backgroundPage} style={{height: '80vh'}}>
+                <ProgressBar variant='success' now={progresso} label={`${progresso}%`} animated now={progresso}/>
                 <Container className={styles.centeringContainer}>
                     <div className={styles.cardImageContainer}>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={deputadoAleatorio.urlFoto} style={{ alignItems: 'center', justifyContent: 'center', }} />
+                        <Card style={{width: '18rem'}}>
+                            <Card.Img variant="top" src={deputadoAleatorio.urlFoto}
+                                      style={{alignItems: 'center', justifyContent: 'center',}}/>
                         </Card>
                     </div>
-                    <h5 className={styles.typingAnimation}>Qual o nome do deputado? resposta: {deputadoAleatorio.nome}</h5>
+                    <h5 className={styles.typingAnimation}>Qual o nome do deputado? resposta: {respostas.nome}</h5>
                     {opcoesDeputado.map((item, i) => (
-                        <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoNome} variant={buttonVariantNome}
-                            onClick={() => handleClickNome(item)} key={i}>{item.nome}</Button>
+                        <Button style={{marginRight: '10px', minWidth: '150px'}} disabled={botaoNome}
+                                variant={buttonVariantNome}
+                                onClick={() => handleClickNome(item)} key={i}>{item.nome}</Button>
                     ))}
-                    <br />
-                    <br />
-                    <h5 className={styles.typingAnimation}>Qual o partido do deputado? resposta: {respostas.partido}</h5>
+                    <br/>
+                    <br/>
+                    <h5 className={styles.typingAnimation}>Qual o partido do deputado?
+                        resposta: {respostas.partido}</h5>
                     {opcoesDeputado.map((item, i) => (
-                        <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoPartido} variant={buttonVariantPartido}
-                            onClick={() => handleClickPartido(item)}
-                            key={i}>{item.siglaPartido}</Button>
+                        <Button style={{marginRight: '10px', minWidth: '150px'}} disabled={botaoPartido}
+                                variant={buttonVariantPartido}
+                                onClick={() => handleClickPartido(item)}
+                                key={i}>{item.siglaPartido}</Button>
                     ))}
-                    <br />
-                    <br />
-                    <h5 className={styles.typingAnimation}>Qual a UF do estado de nascimento do deputado? resposta: {respostas.estado}</h5>
+                    <br/>
+                    <br/>
+                    <h5 className={styles.typingAnimation}>Qual a UF do estado de nascimento do deputado?
+                        resposta: {respostas.estado}</h5>
                     {opcoesDeputado.map((item, i) => (
-                        <Button style={{ marginRight: '10px', minWidth: '150px' }} disabled={botaoEstado} variant={buttonVariantEstado}
-                            onClick={() => handleClickEstado(item)} key={i}>{item.siglaUf}</Button>
+                        <Button style={{marginRight: '10px', minWidth: '150px'}} disabled={botaoEstado}
+                                variant={buttonVariantEstado}
+                                onClick={() => handleClickEstado(item)} key={i}>{item.siglaUf}</Button>
                     ))}
-                    <br />
-                    <Button variant='danger' disabled={progresso < 100} onClick={openModal} style={{ marginTop: '10px' }}>Verificar</Button>
+                    <br/>
+                    <Button variant='danger' style={{marginTop: '10px'}} disabled={progresso < 100}
+                            onClick={openModal}>Verificar</Button>
                 </Container>
                 <Modal isOpen={modalOpen} onClose={closeModal}>
                     <br/>
@@ -225,12 +228,12 @@ const Teste = () => {
                     <p>O que você deseja?</p>
                 </Modal>
             </section>
-            <Footer />
+            <Footer/>
         </>
     );
 };
 
-export default Teste;
+export default Quiz;
 
 function embaralhaPartidos(arr) {
     // Loop em todos os elementos
