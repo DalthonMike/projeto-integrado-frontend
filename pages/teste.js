@@ -187,8 +187,9 @@ const Teste = () => {
                     <Button variant='danger' onClick={openModal} style={{ marginTop: '10px' }}>Verificar</Button>
                 </Container>
                 <Modal isOpen={modalOpen} onClose={closeModal}>
-                    <h2>Título da Modal</h2>
-                    <p>Conteúdo da Modal</p>
+                    <br/>
+                    <p>Parabéns, você acertou X de X questões!</p>
+                    <p>O que você deseja?</p>
                 </Modal>
             </section>
             <Footer />
