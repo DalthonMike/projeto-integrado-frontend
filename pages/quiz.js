@@ -13,6 +13,7 @@ const Quiz = () => {
     const [indiceAleatorio, setIndiceAleatorio] = useState(null);
     const [opcoesDeputado, setOpcoesDeputado] = useState([]);
     const [progresso, setProgresso] = useState(0);
+    const [progressoTemporario, setProgressoTemporario] = useState(0);
     const [botaoNome, setBotaoNome] = useState(false);
     const [botaoPartido, setBotaoPartido] = useState(false);
     const [botaoEstado, setBotaoEstado] = useState(false);
@@ -39,6 +40,7 @@ const Quiz = () => {
                 nome: true
             }));
             setProgresso(progresso + 33);
+            setProgressoTemporario(progressoTemporario + 33);
             setBotaoNome(true);
             setRespostas(prevState => ({
                 ...prevState,
@@ -51,6 +53,7 @@ const Quiz = () => {
                 nome: false
             }));
             setProgresso(progresso + 33);
+            setProgressoTemporario(progressoTemporario + 33);
             setBotaoNome(true);
             setRespostas(prevState => ({
                 ...prevState,
@@ -66,6 +69,7 @@ const Quiz = () => {
                 partido: true
             }));
             setProgresso(progresso + 33);
+            setProgressoTemporario(progressoTemporario + 33);
             setBotaoPartido(true);
             setRespostas(prevState => ({
                 ...prevState,
@@ -78,6 +82,7 @@ const Quiz = () => {
                 partido: false
             }));
             setProgresso(progresso + 33);
+            setProgressoTemporario(progressoTemporario + 33);
             setBotaoPartido(true);
             setRespostas(prevState => ({
                 ...prevState,
@@ -90,6 +95,7 @@ const Quiz = () => {
         console.log(meuObjeto);
         if (item.siglaUf === deputadoAleatorio.siglaUf) {
             setProgresso(progresso + 33 + 1);
+            setProgressoTemporario(progresso + 33 + 1);
             setBotaoEstado(true);
             setMeuObjeto(prevState => ({
                 ...prevState,
@@ -102,6 +108,7 @@ const Quiz = () => {
             setContadorAcertos(contadorAcertos + 1)
         } else {
             setProgresso(progresso + 33 + 1);
+            setProgressoTemporario(progresso + 33 + 1);
             setBotaoEstado(true);
             setMeuObjeto(prevState => ({
                 ...prevState,
@@ -155,6 +162,7 @@ const Quiz = () => {
     };
 
     const closeModal = () => {
+        setProgressoTemporario(0);
         setModalOpen(false);
     };
 
@@ -219,10 +227,10 @@ const Quiz = () => {
                                 onClick={() => handleClickEstado(item)} key={i}>{item.siglaUf}</Button>
                     ))}
                     <br/>
-                    <Button variant='danger' style={{marginTop: '10px'}} disabled={progresso < 100}
-                            onClick={openModal}>Verificar</Button>
+                    <Button variant='danger' style={{marginTop: '10px'}}
+                            href={'https://dadosabertos.camara.leg.br/api/v2/deputados?id=${politico.id}'}>Recarregar</Button>
                 </Container>
-                <Modal isOpen={modalOpen} onClose={closeModal} deputado={deputadoAleatorio}>
+                <Modal isOpen={progressoTemporario === 100 ? true : false} onClose={closeModal} deputado={deputadoAleatorio}>
                     <br/>
                     <p>Parabéns, você acertou {contadorAcertos} de 3 questões!</p>
                     <p>O que você deseja?</p>
