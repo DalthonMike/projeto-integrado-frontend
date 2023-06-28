@@ -16,9 +16,15 @@ const Modal = ({ isOpen, onClose, children, deputadoAleatorio }) => {
                     <a title='Fechar'>x</a>
                 </button>
                 {children}
+<<<<<<< HEAD
                 <button className={styles.modalBtn} onClick={onclose}>
                    <a title='Detalhes do Deputado'>Detalhes</a>
                </button>
+=======
+                <button className={styles.modalBtn} onClick={onClose}>
+                    <a title='Detalhes do Deputado'>Detalhes</a>
+                </button>
+>>>>>>> 13fefa8a0ab4a9820c84b1d52dd04e6610969ef6
                 <button className={styles.modalBtn} onClick={buttonReloadPage}>
                     <a title='Refazer Quiz'>Refazer</a>
                 </button>

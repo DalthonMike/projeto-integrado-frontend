@@ -228,7 +228,11 @@ const Quiz = () => {
                     ))}
                     <br/>
                     <Button variant='danger' style={{marginTop: '10px'}}
+<<<<<<< HEAD
                             href={'/detalhes/220593'}>Recarregar</Button>
+=======
+                            href={'https://dadosabertos.camara.leg.br/api/v2/deputados?id=${politico.id}'}>Recarregar</Button>
+>>>>>>> 13fefa8a0ab4a9820c84b1d52dd04e6610969ef6
                 </Container>
                 <Modal isOpen={progressoTemporario === 100 ? true : false} onClose={closeModal} deputado={deputadoAleatorio}>
                     <br/>
